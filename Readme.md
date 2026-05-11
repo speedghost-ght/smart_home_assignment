@@ -1,3 +1,29 @@
+# NTU Dorm Smart Lighting Automation
+
+This repository contains a ROS 2 Python package designed to automate Philips Hue smart lighting in Nanyang Technological University (NTU) student dormitories. By bridging ROS 2 and MQTT, the system enforces energy-efficient habits by adhering to a strict lighting schedule.
+
+## System Architecture
+
+The system utilizes a distributed architecture to bridge high-level robotic scheduling (ROS 2) with low-level IoT device control (Zigbee/MQTT).
+
+```text
++-------------------------+         +------------------+         +----------------------+
+|                         |         |                  |         |                      |
+|  ROS 2 Node             |  MQTT   |  MQTT Broker     | Zigbee  |  Philips Hue Lights  |
+|  (lighting_controller)  |<------->|  (Mosquitto)     |<------->|  (via Zigbee2MQTT)   |
+|                         |         |                  |         |                      |
++-------------------------+         +------------------+         +----------------------+
+            |
+            v
++-------------------------+
+|                         |
+|  ROS 2 Topic            |
+|  (~/light_state)        |
+|                         |
++-------------------------+
+
+##-----------------------------------------------------------------------------------------------------------------
+
 ## Problem Statement: NTU Dorm Smart Lighting Automation
 
 At Nanyang Technological University (NTU), student dormitories are implementing energy-efficient automated room lighting.
